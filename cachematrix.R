@@ -1,7 +1,7 @@
-##The following two functions, can save us time in calculating the inverse of a matrix, if the inverse is cached and the matrix has not changed. For convenience, we assume the input is always a square invertible matrix, so no check is being performed 
+##The following two functions, can save us time in calculating the inverse of a matrix, if the inverse is cached and the matrix has not changed. For convenience, we assume the input is always a square invertible matrix, so no check is being performed. 
 
 
-## The makeCacheMatrix creates a special "matrix" object that can cache its inverse. The function is then used in the second function to convert the input to the right "matrix" object.
+## The makeCacheMatrix creates a special "matrix" object that stores the matrix. The function is then used in the second function to convert the input to the right "matrix" object. Use of the  <<- operator to assign a value to an object in an environment that is different from the current environment. 
 
 makeCacheMatrix <- function(x = matrix()) {
   
@@ -21,7 +21,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## This function calculates the inverse of the given matrix, after converting it to the special "matrix" object created with the abov function. The function first checks if inverse has been caclulated and skips computation. Otherwise, calculates inverse with solve() function and sets the value in the cache via the setInv function.
+## This function calculates the inverse of the given matrix, after converting it to the special "matrix" object created with the above function. The function first checks if inverse has been caclulated and skips computation. Otherwise, calculates inverse with solve() function and sets the value in the cache via the setInv function.
 
 cacheSolve <- function(x, ...) {
   m <- makeCacheMatrix(x)$getInv()
